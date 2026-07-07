@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 import { AuthStatus, type User } from '@/modules/auth/interfaces';
-import { loginAction, registerAction } from '@/modules/auth/actions';
+import { checkAuthAction, loginAction, registerAction } from '@/modules/auth/actions';
 import { useLocalStorage } from '@vueuse/core';
 
 export const useAuthStore = defineStore('auth', () => {
@@ -64,6 +64,27 @@ export const useAuthStore = defineStore('auth', () => {
     return false;
   };
 
+  const checkAuthStatus = async (): Promise<boolean> => {
+    try {
+      const response = await checkAuthAction();
+
+      if (!response.ok) {
+        logout();
+
+        return false;
+      }
+
+      authStatus.value = AuthStatus.Authenticated;
+      user.value = response.user;
+      token.value = response.token;
+
+      return true;
+    } catch (error) {
+      logout();
+      return false;
+    }
+  };
+
   return {
     authStatus,
     user,
@@ -77,5 +98,6 @@ export const useAuthStore = defineStore('auth', () => {
     // actions
     login,
     register,
+    checkAuthStatus,
   };
 });
