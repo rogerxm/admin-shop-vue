@@ -23,7 +23,7 @@
       <div class="mt-2 sm:mt-0 sm:flex md:order-2">
         <!-- Login Button -->
         <RouterLink
-          to="/login"
+          to="/auth/login"
           type="button"
           class="rounde mr-3 hidden border border-blue-700 py-1.5 px-6 text-center text-sm font-medium text-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 md:inline-block rounded-lg"
         >
@@ -37,7 +37,7 @@
         </button>
         <!-- Register Button -->
         <RouterLink
-          to="/register"
+          to="/auth/register"
           type="button"
           class="inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden"
           aria-controls="navbar-sticky"
