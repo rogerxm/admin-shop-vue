@@ -16,7 +16,7 @@ export const checkAuthAction = async (): Promise<CheckError | CheckSuccess> => {
   try {
     const token = localStorage.getItem('token');
 
-    if (token) {
+    if (!token) {
       return { ok: false };
     }
 
