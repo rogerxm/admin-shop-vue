@@ -58,6 +58,8 @@ export const useAuthStore = defineStore('auth', () => {
   };
 
   const logout = () => {
+    localStorage.removeItem('token');
+
     authStatus.value = AuthStatus.Unauthenticated;
     user.value = undefined;
     token.value = '';
@@ -93,11 +95,13 @@ export const useAuthStore = defineStore('auth', () => {
     // getters
     isChecking: computed(() => authStatus.value === AuthStatus.Checking),
     isAuthenticated: computed(() => authStatus.value === AuthStatus.Authenticated),
+    isAdmin: computed(() => user.value?.roles.includes('admin') ?? false),
     username: computed(() => user.value?.fullName),
 
     // actions
     login,
     register,
+    logout,
     checkAuthStatus,
   };
 });
