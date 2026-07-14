@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts" setup>
-import ButtonPagination from '@/modules/common/componentes/ButtonPagination.vue';
+import ButtonPagination from '@/modules/common/components/ButtonPagination.vue';
 import { usePagination } from '@/modules/common/composables/usePagination';
 import { getProductsAction } from '@/modules/products/actions';
 import { useQuery, useQueryClient } from '@tanstack/vue-query';
