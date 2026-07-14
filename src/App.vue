@@ -10,7 +10,7 @@ import { VueQueryDevtools } from '@tanstack/vue-query-devtools';
 import { useAuthStore } from './stores/auth.store';
 import { useRoute, useRouter } from 'vue-router';
 import { AuthStatus } from './modules/auth/interfaces';
-import FullScreenLoader from './modules/common/componentes/FullScreenLoader.vue';
+import FullScreenLoader from './modules/common/components/FullScreenLoader.vue';
 
 const authStore = useAuthStore();
 
